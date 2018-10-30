@@ -1,17 +1,95 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.4.2/css/all.css" integrity="sha384-/rXc/GQVaYpyDdyxK+ecHPVYJSN9bmVFBvjA/9eOB+pb3F2w2N6fc5qB9Ew5yIns" crossorigin="anonymous">
     <link rel="stylesheet" href="/css/styles.css" type="text/css">
     <title>Boyko's lab</title>
 </head>
-<body>
 
-        <h1>Hi, this is SITE.HTML!</h1>
+<body class="
+    {% if page.categories %}
+        post
+    {% else %}
+        page
+    {% endif %}
+    {% if page.title %}
+        {{ page.title | slugify }}
+    {% else %}
+        home
+    {% endif %}
+    ">
 
-    {{ content }}
-    
+    <div class="site">
+
+        <header class="site-header">
+
+            <div class="header-top">
+                <div class="site-branding">
+                    <p class="site-title">Lazy Home Automation</p>
+                    <p class="site-description">Its fun and time consuming!</p>
+                </div>
+
+                <nav>
+                    <ul class="user">
+                        <li><a href="#">My Account</a></li>
+                    </ul>
+                </nav>
+
+                <form action="#" class="search" method="post">
+                    <input type="text" name="search">
+                    <input type="submit" value="Search" class="button submit">
+                </form>
+            </div>
+
+            <div class="header-bottom">
+                <nav class="main navigation">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/about/">About</a></li>
+                        <li class="sub-menu">
+                            <a href="/shop/">Shop</a>
+                            <ul>
+                                <li><a href="#">NodeMCU</a></li>
+                                <li><a href="#">D1 Mini Pro</a></li>
+                                <li><a href="#">Raspberry Pi 3B+</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="/blog/">Blog</a></li>
+                        <li><a href="/contacts/">Contacts</a></li>
+                    </ul>
+                </nav>
+
+                <div class="basket">
+                    <span class="price-total">$0.00</span>
+                    <span class="items">0 Items</span>
+                </div>
+            </div>
+
+        </header>
+
+        {% if page.title == 'Shop' %}
+        <section class="site-banner">
+            <h3>Welcome</h3>
+            <p>This is really awesome!</p>
+        </section>
+        {% endif %}
+
+        <main class="site-content">
+            {{ content }}
+        </main>
+
+        <footer class="site-footer">
+
+        </footer>
+
+    </div>
+
+
+
 </body>
+
 </html>
